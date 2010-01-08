@@ -62,8 +62,8 @@
 			 ((> x 0) y)
 			 ((< x 0) (negate y))
 			 (t (error 'extended-real-arithmetic-error)))))
-      ((> y 0) x)
-      ((< y 0) (negate x))
+      ((e> y 0) x)
+      ((e< y 0) (negate x))
       (t (error 'extended-real-arithmetic-error)))))
   
 
