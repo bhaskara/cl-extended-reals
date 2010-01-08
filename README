@@ -1,0 +1,3 @@
+Simple extended real arithmetic for common lisp
+
+Extended reals are either real numbers, or one of the symbols 'infinity or '-infinity.  The standard arithmetic operations, comparison, and argmax/min are defined for extended reals to correctly handle infinite values.  In some cases, this makes things easier, e.g., max can now be defined for zero arguments to be -infinity.
