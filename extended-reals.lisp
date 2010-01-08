@@ -79,7 +79,10 @@
 (defun reciprocate (x)
   (declare (type extended-real x))
   (the extended-real 
-    (if (realp x) (/ 1 x) 0.0)))
+    (cond
+      ((zerop x) 'infinity)
+      ((realp x) (/ 1 x))
+      (t 0.0))))
 
 (defun e/ (x &rest args)
   "Extended real division.  With one argument, takes reciprocal, else repeatedly divides."
