@@ -136,7 +136,7 @@
 
 
 (defun argmax (seq &key key)
-  "Return the element of the sequence that maximizes the key value (which must be an extended real), and its position."
+  "Return the element of the sequence that maximizes the key value (which must be an extended real), and its position, and the max key value."
   (unless key (setq key #'identity))
   (let ((dummy (gensym)))
     (let ((max-value '-infinity) (i -1) (maximizer dummy) max-pos)
@@ -147,7 +147,7 @@
 		       (setq maximizer x max-value k max-pos i))))
 	   seq)
       (assert (not (eql maximizer dummy)) nil "Can't find argmax of empty sequence")
-      (values maximizer max-pos))))
+      (values maximizer max-pos max-value))))
 
 (defun argmin (seq &key key)
   (argmax seq :key #'(lambda (x) (negate (funcall key x)))))
