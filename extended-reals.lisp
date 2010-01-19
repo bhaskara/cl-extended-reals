@@ -104,10 +104,14 @@
 (defun pairwise-max (x y)
   (declare (type extended-real x y))
   (the extended-real
-    (cond
-      ((and (realp x) (realp y)) (max x y))
-      ((and (eql x '-infinity) (eql y '-infinity)) '-infinity)
-      (t 'infinity))))
+    (if (realp x)
+	(case y
+	  (infinity 'infinity)
+	  (-infinity x)
+	  (t (max x y)))
+	(ecase x
+	  (infinity 'infinity)
+	  (-infinity y)))))
 
 (defun emin (&rest args)
   "Minimum of zero or more extended reals"
